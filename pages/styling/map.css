@@ -1,0 +1,50 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  font-family: sans-serif;
+}
+
+.page-container {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.sidebar {
+  width: 200px;
+  background-color: #1e1e2f;
+  color: white;
+  padding: 2rem 1rem;
+}
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.nav-item {
+  color: white;
+  text-decoration: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  transition: background 0.2s;
+}
+
+.nav-item:hover {
+  background-color: #333;
+}
+
+.nav-item.active {
+  background-color: #2dd4bf;
+  color: black;
+  font-weight: bold;
+}
+
+.map-area {
+  flex-grow: 1;
+  height: 100vh;
+}

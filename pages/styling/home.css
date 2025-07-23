@@ -1,0 +1,77 @@
+.home-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f5f7fa;
+    font-family: sans-serif;
+    text-align: center;
+  }
+  
+  .home-title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+  }
+  
+  .home-link {
+    display: block;
+    margin: 0.5rem 0;
+    color: #0070f3;
+    text-decoration: none;
+    font-size: 1.1rem;
+  }
+  
+  .home-link:hover {
+    text-decoration: underline;
+  }
+  
+  .transaction-log {
+  margin-top: 40px;
+  width: 100%;
+  max-width: 800px;
+}
+
+.transaction-log h2 {
+  border-bottom: 2px solid #eee;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.log-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  background-color: #f9f9f9;
+}
+
+.log-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.log-details strong {
+  font-size: 1rem;
+}
+
+.log-details small {
+  color: #666;
+  font-style: italic;
+}
+
+.log-amount {
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.log-item.expense .log-amount {
+  color: #e74c3c; /* Red */
+}
+
+.log-item.income .log-amount {
+  color: #2ecc71; /* Green */
+}
