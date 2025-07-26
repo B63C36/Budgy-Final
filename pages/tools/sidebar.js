@@ -8,7 +8,7 @@ export default function Sidebar() {
         <Link href="/input">Home</Link>
         <Link href="/map">Map</Link>
         <Link href="/advisor">Advisor</Link>
-        <a href="/tracker">Tracker</a>       
+        <a href="/tracker">Tracker</a> {/* anchor tag to refresh tracker page */}
       </nav>
     </div>
   );

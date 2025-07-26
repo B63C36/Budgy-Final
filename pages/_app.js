@@ -1,3 +1,4 @@
+// imports all css for repective pages
 import "./styling/home.css";
 import "./styling/advisor.css";
 import "./styling/map.css";

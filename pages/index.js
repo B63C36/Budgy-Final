@@ -1,4 +1,4 @@
-import Sidebar from "./tools/sidebar";
+import Sidebar from "./tools/sidebar"; // imports sidebar
 
 export default function Home() {
   return (

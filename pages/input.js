@@ -14,13 +14,12 @@ export default function InputPage() {
   const [location, setLocation] = useState("");
   const [cost, setCost] = useState("");
   const [income, setIncome] = useState("");
-  const [transactionDate, setTransactionDate] = useState(getTodayString());
-  const [transactionLog, setTransactionLog] = useState([]); // State for the log
+  const [transactionDate, setTransactionDate] = useState(getTodayString()); // sets transation date to current date as default
+  const [transactionLog, setTransactionLog] = useState([]); 
 
-  // Effect to load transactions from storage when the page loads
-  useEffect(() => {
-    const savedTransactions = JSON.parse(localStorage.getItem("transactions")) || [];
-    setTransactionLog(savedTransactions.sort((a, b) => new Date(b.date) - new Date(a.date)));
+  useEffect(() => { // when the page loads it runs
+    const savedTransactions = JSON.parse(localStorage.getItem("transactions")) || []; // gets local storage data
+    setTransactionLog(savedTransactions.sort((a, b) => new Date(b.date) - new Date(a.date))); // updates transaction log
   }, []);
 
   const handleSubmit = (e) => {
@@ -30,9 +29,9 @@ export default function InputPage() {
     const locations = JSON.parse(localStorage.getItem("locations")) || [];
 
     if (cost && item) {
-      locations.push({ lat: 53.3498, lng: -6.2603, label: `${item} (€${cost})` });
-      transactions.push({
-        id: new Date().getTime(),
+      locations.push({ lat: 53.3498, lng: -6.2603, label: `${item} (€${cost})` }); // adds location to map (hardcoded for now)
+      transactions.push({ // adds new expense transaction
+        id: new Date().getTime(), // creates a unique time id 
         description: item,
         location: location,
         amount: parseFloat(cost),
@@ -42,23 +41,23 @@ export default function InputPage() {
     }
 
     if (income) {
-      transactions.push({
+      transactions.push({ // adds new income transaction
         id: new Date().getTime() + 1,
         description: 'Income',
-        location: 'N/A',
+        location: 'N/A', // not needed 
         amount: parseFloat(income),
         type: 'income',
         date: new Date(transactionDate).toISOString(),
       });
     }
 
-    localStorage.setItem("transactions", JSON.stringify(transactions));
+    localStorage.setItem("transactions", JSON.stringify(transactions)); // saves all lists to local storage
     localStorage.setItem("locations", JSON.stringify(locations));
     
-    // Instantly update the log on the page after submitting
-    setTransactionLog(transactions.sort((a, b) => new Date(b.date) - new Date(a.date)));
 
-    alert("Entry saved!");
+    setTransactionLog(transactions.sort((a, b) => new Date(b.date) - new Date(a.date))); // shows all new transations
+
+    alert("Entry saved!"); // resets entry from
     setItem("");
     setLocation("");
     setCost("");
@@ -77,7 +76,7 @@ export default function InputPage() {
           <input type="text" value={location} onChange={(e) => setLocation(e.target.value)} placeholder="Where did you buy it?" />
           <input type="number" step="0.01" value={cost} onChange={(e) => setCost(e.target.value)} placeholder="How much did it cost? (€)" />
           <input type="number" step="0.01" value={income} onChange={(e) => setIncome(e.target.value)} placeholder="Add any income (€)" />
-          <button type="submit">Add Entry</button>
+          <button type="submit">Add</button>
         </form>
 
         {/* Transaction Log Section */}
@@ -89,9 +88,9 @@ export default function InputPage() {
                 <div className="log-details">
                   <strong>{t.description}</strong>
                   <small>{new Date(t.date).toLocaleDateString()}</small>
-                  {t.type === 'expense' && <small>at {t.location}</small>}
+                  {t.type === 'expense' && <small>at {t.location}</small>}  {/* location shown on expense only */}
                 </div>
-                <div className="log-amount">
+                <div className="log-amount"> {/* expense is negative and icome is positive */}
                   {t.type === 'expense' ? `-€${t.amount.toFixed(2)}` : `+€${t.amount.toFixed(2)}`}
                 </div>
               </div>
