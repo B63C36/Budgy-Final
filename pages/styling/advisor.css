@@ -43,6 +43,7 @@
   .response-box {
     margin-top: 16px;
     background-color: #2d2d2d;
+    color: white;
     padding: 16px;
     border-radius: 8px;
     white-space: pre-wrap;
